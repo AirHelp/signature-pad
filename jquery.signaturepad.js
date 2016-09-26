@@ -390,15 +390,14 @@ function SignaturePad (selector, options) {
    * @param {Object} e The event object
    */
   function initDrawEvents (e) {
+    // Closes open keyboards to free up space
+    if(document.activeElement && document.activeElement.nodeName === "INPUT") {
+      $(document.activeElement).blur();
+    }
     if (eventsBound)
       return false
 
     eventsBound = true
-
-    // Closes open keyboards to free up space
-    if( document.activeElement && document.activeElement.nodeName === "INPUT"){
-      $( document.activeElement ).blur();
-    }
     
     if (typeof e.targetTouches !== 'undefined')
       touchable = true
